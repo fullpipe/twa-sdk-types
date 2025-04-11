@@ -1,5 +1,5 @@
 {
-  "name": "ts-package-boilerplate",
+  "name": "telegram-webapps-types",
   "version": "1.0.0",
   "description": "",
   "main": "build/index.js",
@@ -21,15 +21,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fullpipe/ts-package-boilerplate.git"
+    "url": "git+https://github.com/fullpipe/telegram-webapps-types.git"
   },
   "keywords": [],
   "author": "Eugene Bravov <eugene.bravov@gmail.com> (https://github.com/fullpipe)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/fullpipe/ts-package-boilerplate/issues"
+    "url": "https://github.com/fullpipe/telegram-webapps-types/issues"
   },
-  "homepage": "https://github.com/fullpipe/ts-package-boilerplate#readme",
+  "homepage": "https://github.com/fullpipe/telegram-webapps-types#readme",
   "devDependencies": {
     "@types/chai": "^5.0.1",
     "@types/mocha": "^10.0.10",
