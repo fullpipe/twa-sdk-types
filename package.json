@@ -1,0 +1,46 @@
+{
+  "name": "ts-package-boilerplate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "env TS_NODE_COMPILER_OPTIONS='{\"rootDir\": \".\"}' mocha -r ts-node/register 'test/**/*.ts'",
+    "lint": "gts lint",
+    "clean": "gts clean",
+    "fix": "gts fix",
+    "prepare": "npm run compile",
+    "posttest": "npm run lint",
+    "prepublishOnly": "npm test",
+    "preversion": "npm run lint",
+    "version": "npm run fix && git add -A src",
+    "postversion": "git push && git push --tags",
+    "compile": "tsc",
+    "pretest": "npm run compile"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fullpipe/ts-package-boilerplate.git"
+  },
+  "keywords": [],
+  "author": "Eugene Bravov <eugene.bravov@gmail.com> (https://github.com/fullpipe)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fullpipe/ts-package-boilerplate/issues"
+  },
+  "homepage": "https://github.com/fullpipe/ts-package-boilerplate#readme",
+  "devDependencies": {
+    "@types/chai": "^5.0.1",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^22.7.5",
+    "@types/sinon": "^17.0.3",
+    "chai": "^5.1.2",
+    "gts": "^6.0.2",
+    "mocha": "^10.8.2",
+    "sinon": "^19.0.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.3"
+  },
+  "dependencies": {}
+}
