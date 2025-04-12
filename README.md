@@ -5,13 +5,13 @@
 Install
 
 ```sh
-npm install @telegram-webapps/types
+npm install twa-sdk-types
 ```
 
 Declare in `global.d.ts`
 
 ```ts
-import { Telegram } from '@telegram-webapps/types';
+import { Telegram } from 'twa-sdk-types';
 
 declare global {
   interface Window {

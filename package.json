@@ -1,5 +1,5 @@
 {
-  "name": "@telegram-webapps/types",
+  "name": "twa-sdk-types",
   "version": "0.0.1",
   "description": "Types for Telegram Web Apps (TWA) SDK",
   "keywords": [
