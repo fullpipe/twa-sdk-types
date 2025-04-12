@@ -1,0 +1,25 @@
+name: Build check
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+permissions:
+  contents: read
+
+jobs:
+  build_check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Setup repo
+        uses: actions/checkout@v4
+
+      - name: Setup Deno
+        uses: denoland/setup-deno@v2
+        with:
+          deno-version: stable
+      - name: Build check
+        run: deno --allow-env --allow-read --allow-net --allow-write scrape/main.ts
