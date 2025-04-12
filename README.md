@@ -1,4 +1,4 @@
-# ts-package-boilerplate
+# Types for Telegram Web Apps (TWA) SDK
 
 ## Usage
 
@@ -21,13 +21,15 @@ declare global {
 window.Telegram.WebApp.HapticFeedback.notificationOccurred('success');
 ```
 
-## Versioning and updates
+## Versioning and Updates
 
-Major and minor versions of a package will be sync with SDK.
+Major and minor versions of the package will be synchronized with the SDK.
 
-`SDK v9.0` => `@telegram-webapps/types@9.0.*`
+For example:
 
-So all fixes within SDK v9.0 would be published as patches.
+- `SDK v9.0` => `twa-sdk-types@9.0.*`
+
+All fixes within a specific SDK version (e.g., `v9.0`) will be published as patch updates.
 
 ## Update and generate
 

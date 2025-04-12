@@ -1,3 +1,6 @@
+export interface Telegram {
+    WebApp: WebApp;
+}
 /**
  *
  *
@@ -88,24 +91,24 @@ export interface WebApp {
     /**
      * Current header color in the `#RRGGBB` format.
      *
-     * @type {string}
+     * @type {undefined}
      * @readonly
      */
-    readonly headerColor: string;
+    readonly headerColor: undefined;
     /**
      * Current background color in the `#RRGGBB` format.
      *
-     * @type {string}
+     * @type {undefined}
      * @readonly
      */
-    readonly backgroundColor: string;
+    readonly backgroundColor: undefined;
     /**
      * Current bottom bar color in the `#RRGGBB` format.
      *
-     * @type {string}
+     * @type {undefined}
      * @readonly
      */
-    readonly bottomBarColor: string;
+    readonly bottomBarColor: undefined;
     /**
      * _True_, if the confirmation dialog is enabled while the user is trying to close the Mini App. _False_, if the confirmation dialog is disabled.
      *
@@ -248,15 +251,15 @@ export interface WebApp {
      *
      * Up to `Bot API 6.9` You can only pass _Telegram.WebApp.themeParams.bg\_color_ or _Telegram.WebApp.themeParams.secondary\_bg\_color_ as a color or _bg\_color_, _secondary\_bg\_color_ keywords.
      */
-    setHeaderColor(color: `#${string}` | 'bg_color' | 'secondary_bg_color'): void;
+    setHeaderColor(color: `#${string}` | "bg_color" | "secondary_bg_color"): void;
     /**
      * `Bot API 6.1+` A method that sets the app background color in the `#RRGGBB` format. You can also use keywords _bg\_color_ and _secondary\_bg\_color_.
      */
-    setBackgroundColor(color: `#${string}` | 'bg_color' | 'secondary_bg_color'): void;
+    setBackgroundColor(color: `#${string}` | "bg_color" | "secondary_bg_color"): void;
     /**
      * `Bot API 7.10+` A method that sets the app's bottom bar color in the `#RRGGBB` format. You can also use the keywords _bg\_color_, _secondary\_bg\_color_, and _bottom\_bar\_bg\_color_. This color is also applied to the navigation bar on Android.
      */
-    setBottomBarColor(color: `#${string}` | 'bg_color' | 'secondary_bg_color' | 'bottom_bar_bg_color'): void;
+    setBottomBarColor(color: `#${string}` | "bg_color" | "secondary_bg_color" | "bottom_bar_bg_color"): void;
     /**
      * `Bot API 6.2+` A method that enables a confirmation dialog while the user is trying to close the Mini App.
      */
@@ -318,7 +321,7 @@ export interface WebApp {
     /**
      * `Bot API 6.7+` A method that inserts the bot's username and the specified inline _query_ in the current chat's input field. Query may be empty, in which case only the bot's username will be inserted. If an optional _choose\_chat\_types_ parameter was passed, the client prompts the user to choose a specific chat, then opens that chat and inserts the bot's username and the specified inline query in the input field. You can specify which types of chats the user will be able to choose from. It can be one or more of the following types: _users_, _bots_, _groups_, _channels_.
      */
-    switchInlineQuery(query: string, choose_chat_types?: 'users' | 'bots' | 'groups' | 'channels'): void;
+    switchInlineQuery(query: string, choose_chat_types?: "users" | "bots" | "groups" | "channels"): void;
     /**
      * A method that opens a link in an external browser. The Mini App will _not_ be closed.
      * `Bot API 6.4+` If the optional _options_ parameter is passed with the field _try\_instant\_view=true_, the link will be opened in [Instant View](https://instantview.telegram.org/) mode if possible.
@@ -683,7 +686,7 @@ interface EventCallbacks {
     [EventType.settingsButtonClicked]: () => void;
     [EventType.invoiceClosed]: (e: {
         url: string;
-        status: 'paid' | 'cancelled' | 'failed' | 'pending';
+        status: "paid" | "cancelled" | "failed" | "pending";
     }) => void;
     [EventType.popupClosed]: (e: {
         button_id: string;
@@ -696,10 +699,10 @@ interface EventCallbacks {
         data: string | null;
     }) => void;
     [EventType.writeAccessRequested]: (e: {
-        status: 'allowed' | 'cancelled';
+        status: "allowed" | "cancelled";
     }) => void;
     [EventType.contactRequested]: (e: {
-        status: 'sent' | 'cancelled';
+        status: "sent" | "cancelled";
     }) => void;
     [EventType.biometricManagerUpdated]: () => void;
     [EventType.biometricAuthRequested]: (e: {
@@ -711,29 +714,29 @@ interface EventCallbacks {
     }) => void;
     [EventType.fullscreenChanged]: () => void;
     [EventType.fullscreenFailed]: (e: {
-        error: 'UNSUPPORTED' | 'ALREADY_FULLSCREEN';
+        error: "UNSUPPORTED" | "ALREADY_FULLSCREEN";
     }) => void;
     [EventType.homeScreenAdded]: () => void;
     [EventType.homeScreenChecked]: (e: {
-        status: 'unsupported' | 'unknown' | 'added' | 'missed';
+        status: "unsupported" | "unknown" | "added" | "missed";
     }) => void;
     [EventType.accelerometerStarted]: () => void;
     [EventType.accelerometerStopped]: () => void;
     [EventType.accelerometerChanged]: () => void;
     [EventType.accelerometerFailed]: (e: {
-        error: 'UNSUPPORTED';
+        error: "UNSUPPORTED";
     }) => void;
     [EventType.deviceOrientationStarted]: () => void;
     [EventType.deviceOrientationStopped]: () => void;
     [EventType.deviceOrientationChanged]: () => void;
     [EventType.deviceOrientationFailed]: (e: {
-        error: 'UNSUPPORTED';
+        error: "UNSUPPORTED";
     }) => void;
     [EventType.gyroscopeStarted]: () => void;
     [EventType.gyroscopeStopped]: () => void;
     [EventType.gyroscopeChanged]: () => void;
     [EventType.gyroscopeFailed]: (e: {
-        error: 'UNSUPPORTED';
+        error: "UNSUPPORTED";
     }) => void;
     [EventType.locationManagerUpdated]: () => void;
     [EventType.locationRequested]: (e: {
@@ -741,17 +744,17 @@ interface EventCallbacks {
     }) => void;
     [EventType.shareMessageSent]: () => void;
     [EventType.shareMessageFailed]: (e: {
-        error: 'UNSUPPORTED' | 'MESSAGE_EXPIRED' | 'MESSAGE_SEND_FAILED' | 'USER_DECLINED' | 'UNKNOWN_ERROR';
+        error: "UNSUPPORTED" | "MESSAGE_EXPIRED" | "MESSAGE_SEND_FAILED" | "USER_DECLINED" | "UNKNOWN_ERROR";
     }) => void;
     [EventType.emojiStatusSet]: () => void;
     [EventType.emojiStatusFailed]: (e: {
-        error: 'UNSUPPORTED' | 'SUGGESTED_EMOJI_INVALID' | 'DURATION_INVALID' | 'USER_DECLINED' | 'SERVER_ERROR' | 'UNKNOWN_ERROR';
+        error: "UNSUPPORTED" | "SUGGESTED_EMOJI_INVALID" | "DURATION_INVALID" | "USER_DECLINED" | "SERVER_ERROR" | "UNKNOWN_ERROR";
     }) => void;
     [EventType.emojiStatusAccessRequested]: (e: {
-        status: 'allowed' | 'cancelled';
+        status: "allowed" | "cancelled";
     }) => void;
     [EventType.fileDownloadRequested]: (e: {
-        status: 'downloading' | 'cancelled';
+        status: "downloading" | "cancelled";
     }) => void;
 }
 /**
@@ -764,122 +767,122 @@ export interface ThemeParams {
      * _Optional_. Background color in the `#RRGGBB` format.
      * Also available as the CSS variable `var(--tg-theme-bg-color)`.
      *
-     * @type {string}
+     * @type {undefined}
      * @readonly
      */
-    readonly bg_color: string;
+    readonly bg_color?: undefined;
     /**
      * _Optional_. Main text color in the `#RRGGBB` format.
      * Also available as the CSS variable `var(--tg-theme-text-color)`.
      *
-     * @type {string}
+     * @type {undefined}
      * @readonly
      */
-    readonly text_color: string;
+    readonly text_color?: undefined;
     /**
      * _Optional_. Hint text color in the `#RRGGBB` format.
      * Also available as the CSS variable `var(--tg-theme-hint-color)`.
      *
-     * @type {string}
+     * @type {undefined}
      * @readonly
      */
-    readonly hint_color: string;
+    readonly hint_color?: undefined;
     /**
      * _Optional_. Link color in the `#RRGGBB` format.
      * Also available as the CSS variable `var(--tg-theme-link-color)`.
      *
-     * @type {string}
+     * @type {undefined}
      * @readonly
      */
-    readonly link_color: string;
+    readonly link_color?: undefined;
     /**
      * _Optional_. Button color in the `#RRGGBB` format.
      * Also available as the CSS variable `var(--tg-theme-button-color)`.
      *
-     * @type {string}
+     * @type {undefined}
      * @readonly
      */
-    readonly button_color: string;
+    readonly button_color?: undefined;
     /**
      * _Optional_. Button text color in the `#RRGGBB` format.
      * Also available as the CSS variable `var(--tg-theme-button-text-color)`.
      *
-     * @type {string}
+     * @type {undefined}
      * @readonly
      */
-    readonly button_text_color: string;
+    readonly button_text_color?: undefined;
     /**
      * _Optional_. `Bot API 6.1+` Secondary background color in the `#RRGGBB` format.
      * Also available as the CSS variable `var(--tg-theme-secondary-bg-color)`.
      *
-     * @type {string}
+     * @type {undefined}
      * @readonly
      */
-    readonly secondary_bg_color: string;
+    readonly secondary_bg_color?: undefined;
     /**
      * _Optional_. `Bot API 7.0+` Header background color in the `#RRGGBB` format.
      * Also available as the CSS variable `var(--tg-theme-header-bg-color)`.
      *
-     * @type {string}
+     * @type {undefined}
      * @readonly
      */
-    readonly header_bg_color: string;
+    readonly header_bg_color?: undefined;
     /**
      * _Optional_. `Bot API 7.10+` Bottom background color in the `#RRGGBB` format.
      * Also available as the CSS variable `var(--tg-theme-bottom-bar-bg-color)`.
      *
-     * @type {string}
+     * @type {undefined}
      * @readonly
      */
-    readonly bottom_bar_bg_color: string;
+    readonly bottom_bar_bg_color?: undefined;
     /**
      * _Optional_. `Bot API 7.0+` Accent text color in the `#RRGGBB` format.
      * Also available as the CSS variable `var(--tg-theme-accent-text-color)`.
      *
-     * @type {string}
+     * @type {undefined}
      * @readonly
      */
-    readonly accent_text_color: string;
+    readonly accent_text_color?: undefined;
     /**
      * _Optional_. `Bot API 7.0+` Background color for the section in the `#RRGGBB` format. It is recommended to use this in conjunction with _secondary\_bg\_color_.
      * Also available as the CSS variable `var(--tg-theme-section-bg-color)`.
      *
-     * @type {string}
+     * @type {undefined}
      * @readonly
      */
-    readonly section_bg_color: string;
+    readonly section_bg_color?: undefined;
     /**
      * _Optional_. `Bot API 7.0+` Header text color for the section in the `#RRGGBB` format.
      * Also available as the CSS variable `var(--tg-theme-section-header-text-color)`.
      *
-     * @type {string}
+     * @type {undefined}
      * @readonly
      */
-    readonly section_header_text_color: string;
+    readonly section_header_text_color?: undefined;
     /**
      * _Optional_. `Bot API 7.6+` Section separator color in the `#RRGGBB` format.
      * Also available as the CSS variable `var(--tg-theme-section-separator-color)`.
      *
-     * @type {string}
+     * @type {undefined}
      * @readonly
      */
-    readonly section_separator_color: string;
+    readonly section_separator_color?: undefined;
     /**
      * _Optional_. `Bot API 7.0+` Subtitle text color in the `#RRGGBB` format.
      * Also available as the CSS variable `var(--tg-theme-subtitle-text-color)`.
      *
-     * @type {string}
+     * @type {undefined}
      * @readonly
      */
-    readonly subtitle_text_color: string;
+    readonly subtitle_text_color?: undefined;
     /**
      * _Optional_. `Bot API 7.0+` Text color for destructive actions in the `#RRGGBB` format.
      * Also available as the CSS variable `var(--tg-theme-destructive-text-color)`.
      *
-     * @type {string}
+     * @type {undefined}
      * @readonly
      */
-    readonly destructive_text_color: string;
+    readonly destructive_text_color?: undefined;
 }
 /**
  * This object describes additional sharing settings for the native story editor.
@@ -893,7 +896,7 @@ export interface StoryShareParams {
      * @type {string}
      * @readonly
      */
-    readonly text: string;
+    readonly text?: string;
     /**
      * _Optional_. An object that describes a widget link to be included in the story. Note that only [premium](https://telegram.org/faq_premium#telegram-premium) subscribers can post stories with links.
      *
@@ -921,7 +924,7 @@ export interface StoryWidgetLink {
      * @type {string}
      * @readonly
      */
-    readonly name: string;
+    readonly name?: string;
 }
 /**
  * This object describes the native popup for scanning QR codes.
@@ -935,7 +938,7 @@ export interface ScanQrPopupParams {
      * @type {string}
      * @readonly
      */
-    readonly text: string;
+    readonly text?: string;
 }
 /**
  * This object describes the native popup.
@@ -949,7 +952,7 @@ export interface PopupParams {
      * @type {string}
      * @readonly
      */
-    readonly title: string;
+    readonly title?: string;
     /**
      * The message to be displayed in the body of the popup, 1-256 characters.
      *
@@ -978,7 +981,7 @@ export interface PopupButton {
      * @type {string}
      * @readonly
      */
-    readonly id: string;
+    readonly id?: string;
     /**
      * _Optional_. Type of the button. Set to _default_ by default.
      * Can be one of these values:
@@ -991,14 +994,14 @@ export interface PopupButton {
      * @type {string}
      * @readonly
      */
-    readonly type: string;
+    readonly type?: string;
     /**
      * _Optional_. The text to be displayed on the button, 0-64 characters. Required if _type_ is _default_ or _destructive_. Irrelevant for other types.
      *
      * @type {string}
      * @readonly
      */
-    readonly text: string;
+    readonly text?: string;
 }
 /**
  * This object describes additional settings for setting an emoji status.
@@ -1012,7 +1015,7 @@ export interface EmojiStatusParams {
      * @type {number}
      * @readonly
      */
-    readonly duration: number;
+    readonly duration?: number;
 }
 /**
  * This object describes the parameters for the file download request.
@@ -1311,14 +1314,14 @@ export interface HapticFeedback {
      * \- _rigid_, indicates a collision between hard or inflexible UI objects,
      * \- _soft_, indicates a collision between soft or flexible UI objects.
      */
-    impactOccurred(style: 'light' | 'medium' | 'heavy' | 'rigid' | 'soft'): HapticFeedback;
+    impactOccurred(style: "light" | "medium" | "heavy" | "rigid" | "soft"): HapticFeedback;
     /**
      * `Bot API 6.1+` A method tells that a task or action has succeeded, failed, or produced a warning. The Telegram app may play the appropriate haptics based on type value passed. Type can be one of these values:
      * \- _error_, indicates that a task or action has failed,
      * \- _success_, indicates that a task or action has completed successfully,
      * \- _warning_, indicates that a task or action produced a warning.
      */
-    notificationOccurred(type: 'error' | 'success' | 'warning'): HapticFeedback;
+    notificationOccurred(type: "error" | "success" | "warning"): HapticFeedback;
     /**
      * `Bot API 6.1+` A method tells that the user has changed a selection. The Telegram app may play the appropriate haptics.
      *
@@ -1450,7 +1453,7 @@ export interface BiometricRequestAccessParams {
      * @type {string}
      * @readonly
      */
-    readonly reason: string;
+    readonly reason?: string;
 }
 /**
  * This object describes the native popup for authenticating the user using biometrics.
@@ -1464,7 +1467,7 @@ export interface BiometricAuthenticateParams {
      * @type {string}
      * @readonly
      */
-    readonly reason: string;
+    readonly reason?: string;
 }
 /**
  * This object provides access to accelerometer data on the device.
@@ -1521,7 +1524,7 @@ export interface AccelerometerStartParams {
      * @type {number}
      * @readonly
      */
-    readonly refresh_rate: number;
+    readonly refresh_rate?: number;
 }
 /**
  * This object provides access to orientation data on the device.
@@ -1585,7 +1588,7 @@ export interface DeviceOrientationStartParams {
      * @type {number}
      * @readonly
      */
-    readonly refresh_rate: number;
+    readonly refresh_rate?: number;
     /**
      * _Optional._ Pass _true_ to receive absolute orientation data, allowing you to determine the device's attitude relative to magnetic north. Use this option if implementing features like a compass in your app. If relative data is sufficient, pass _false_. Set to _false_ by default.
      *
@@ -1594,7 +1597,7 @@ export interface DeviceOrientationStartParams {
      * @type {boolean}
      * @readonly
      */
-    readonly need_absolute: boolean;
+    readonly need_absolute?: boolean;
 }
 /**
  * This object provides access to gyroscope data on the device.
@@ -1651,7 +1654,7 @@ export interface GyroscopeStartParams {
      * @type {number}
      * @readonly
      */
-    readonly refresh_rate: number;
+    readonly refresh_rate?: number;
 }
 /**
  * This object controls location access on the device. Before the first use of this object, it needs to be initialized using the _init_ method.
@@ -1834,7 +1837,7 @@ export interface WebAppInitData {
      * @type {string}
      * @readonly
      */
-    readonly query_id: string;
+    readonly query_id?: string;
     /**
      * _Optional._ An object containing data about the current user.
      *
@@ -1862,14 +1865,14 @@ export interface WebAppInitData {
      * @type {string}
      * @readonly
      */
-    readonly chat_type: string;
+    readonly chat_type?: string;
     /**
      * _Optional._ Global identifier, uniquely corresponding to the chat from which the Mini App was opened. Returned only for Mini Apps launched from a direct link.
      *
      * @type {string}
      * @readonly
      */
-    readonly chat_instance: string;
+    readonly chat_instance?: string;
     /**
      * _Optional._ The value of the _startattach_ parameter, passed [via link](#adding-bots-to-the-attachment-menu). Only returned for Mini Apps when launched from the attachment menu via link.
      *
@@ -1878,14 +1881,14 @@ export interface WebAppInitData {
      * @type {string}
      * @readonly
      */
-    readonly start_param: string;
+    readonly start_param?: string;
     /**
      * _Optional._ Time in seconds, after which a message can be sent via the [answerWebAppQuery](/bots/api#answerwebappquery) method.
      *
      * @type {number}
      * @readonly
      */
-    readonly can_send_after: number;
+    readonly can_send_after?: number;
     /**
      * Unix time when the form was opened.
      *
@@ -1927,7 +1930,7 @@ export interface WebAppUser {
      * @type {boolean}
      * @readonly
      */
-    readonly is_bot: boolean;
+    readonly is_bot?: boolean;
     /**
      * First name of the user or bot.
      *
@@ -1941,49 +1944,49 @@ export interface WebAppUser {
      * @type {string}
      * @readonly
      */
-    readonly last_name: string;
+    readonly last_name?: string;
     /**
      * _Optional_. Username of the user or bot.
      *
      * @type {string}
      * @readonly
      */
-    readonly username: string;
+    readonly username?: string;
     /**
      * _Optional_. [IETF language tag](https://en.wikipedia.org/wiki/IETF_language_tag) of the user's language. Returns in _user_ field only.
      *
      * @type {string}
      * @readonly
      */
-    readonly language_code: string;
+    readonly language_code?: string;
     /**
      * _Optional_. _True_, if this user is a Telegram Premium user.
      *
      * @type {boolean}
      * @readonly
      */
-    readonly is_premium: boolean;
+    readonly is_premium?: boolean;
     /**
      * _Optional_. _True_, if this user added the bot to the attachment menu.
      *
      * @type {boolean}
      * @readonly
      */
-    readonly added_to_attachment_menu: boolean;
+    readonly added_to_attachment_menu?: boolean;
     /**
      * _Optional_. _True_, if this user allowed the bot to message them.
      *
      * @type {boolean}
      * @readonly
      */
-    readonly allows_write_to_pm: boolean;
+    readonly allows_write_to_pm?: boolean;
     /**
      * _Optional_. URL of the user’s profile photo. The photo can be in .jpeg or .svg formats.
      *
      * @type {string}
      * @readonly
      */
-    readonly photo_url: string;
+    readonly photo_url?: string;
 }
 /**
  * This object represents a chat.
@@ -2018,13 +2021,13 @@ export interface WebAppChat {
      * @type {string}
      * @readonly
      */
-    readonly username: string;
+    readonly username?: string;
     /**
      * _Optional_. URL of the chat’s photo. The photo can be in .jpeg or .svg formats. Only returned for Mini Apps launched from the attachment menu.
      *
      * @type {string}
      * @readonly
      */
-    readonly photo_url: string;
+    readonly photo_url?: string;
 }
 export {};

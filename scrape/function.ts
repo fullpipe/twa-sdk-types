@@ -240,6 +240,7 @@ type ButtonParams = {
 };
 
 export function parseFunctionSig(str: string): Func {
+  // @see https://regex101.com/r/a27nUQ/1
   const regex =
     /(?<name>\w+)\((?:(?:(?<r1>\w+)(?:\,\s?(?<r2>\w+))?)?(?:\,\s?)?(?:\[(?:\,\s?)?(?<o1>\w+)(?:\,\s?(?<o2>\w+))?\])?)?\)/gm;
 
