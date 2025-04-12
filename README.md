@@ -2,12 +2,20 @@
 
 ## Setup
 
-Use this repository as a template. 
-*Sed* package name 
+To rebuild types
 
+```sh
+deno --allow-env --allow-read --allow-net --allow-write scrape/main.ts
 ```
-sed -i '' 's/ts-package-boilerplate/am-i-online/' package.json
-sed -i '' 's/fullpipe/your-github-username/' package.json
+
+```ts
+import type WebApp from './index.d.ts';
+
+declare global {
+  interface Window {
+    Telegram: { WebApp: WebApp };
+  }
+}
 ```
 
 Also fix other stuff in `package.json`
@@ -24,7 +32,7 @@ npm run test
 **gts** with some tweaks  
 **mocha + chai** for tests  
 **build/** dir not ignored by default  
-**npm publish** automation   
+**npm publish** automation
 
 ## Publish
 
@@ -52,7 +60,6 @@ npm publish
 ```
 
 `version` command executes `git add ...` and `git push`, see `package.json`
-
 
 ## Todo
 

@@ -1,9 +1,12 @@
 {
   "name": "telegram-webapps-types",
-  "version": "1.0.0",
+  "version": "9.0.0",
   "description": "",
   "main": "build/index.js",
   "types": "build/index.d.ts",
+  "files": [
+    "index.d.ts"
+  ],
   "scripts": {
     "build": "tsc",
     "test": "env TS_NODE_COMPILER_OPTIONS='{\"rootDir\": \".\"}' mocha -r ts-node/register 'test/**/*.ts'",
