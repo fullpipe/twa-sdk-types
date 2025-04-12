@@ -1,7 +1,7 @@
 import { parse, HTMLElement } from 'npm:node-html-parser';
 import TurndownService from 'npm:turndown';
 import { FunctionSigs, parseFunctionSig } from './function.ts';
-import { EventCallbacks } from './event.ts';
+import { EventCallbackArgs } from './event.ts';
 
 const turndownService = new TurndownService();
 turndownService.addRule('mark', {
@@ -23,8 +23,8 @@ const SCALARS = new Map<string, string>([
   ['Integer', 'number'],
 ]);
 
-const raw = await fetch('https://core.telegram.org/bots/webapps');
-const html = parse(await raw.text());
+const rawHtml = await fetch('https://core.telegram.org/bots/webapps');
+const html = parse(await rawHtml.text());
 
 function nexTable(el: HTMLElement | null): HTMLElement | null {
   while (el !== null && el?.tagName !== 'TABLE') {
@@ -41,7 +41,7 @@ const WebAppTable = nexTable(
 );
 
 const TYPES = new Map<string, boolean>([
-  // this *Params described if function description, need to add them manualy
+  // this Params described if functions description, need to add them manualy
   ['BiometricRequestAccessParams', true],
   ['BiometricAuthenticateParams', true],
   ['AccelerometerStartParams', true],
@@ -70,6 +70,10 @@ const file = await Deno.create('./src/index.ts');
 await file.truncate();
 
 file.writeSync(
+  new TextEncoder().encode('export interface Telegram { WebApp: WebApp }\n'),
+);
+
+file.writeSync(
   new TextEncoder().encode(
     buildType(
       'WebApp',
@@ -93,6 +97,8 @@ const eventEnum = [
   `
 /**
  * ${md_description(EventsDesciption!)}
+ *
+ * @see https://core.telegram.org/bots/webapps#events-available-for-mini-apps
  */`,
   'const enum EventType {',
 ];
@@ -111,17 +117,23 @@ ${eventType} = '${eventType}',`);
   if (description.includes('receives no parameters')) {
     eventCallbacks.push(`[EventType.${eventType}]: () => void;`);
   } else {
-    if (!EventCallbacks[eventType]) {
-      throw new Error(`define callback for '${eventType}' in EventCallbacks`);
+    if (!EventCallbackArgs[eventType]) {
+      throw new Error(
+        `define callback args for '${eventType}' in EventCallbacks`,
+      );
     }
+
+    eventCallbacks.push(
+      `[EventType.${eventType}]: (e: ${EventCallbackArgs[eventType]}) => void;`,
+    );
   }
 });
 
 eventEnum.push('}');
 eventCallbacks.push('}');
 
-file.writeSync(new TextEncoder().encode(eventEnum.join('')));
-file.writeSync(new TextEncoder().encode(eventCallbacks.join('')));
+file.writeSync(new TextEncoder().encode(eventEnum.join('\n')));
+file.writeSync(new TextEncoder().encode(eventCallbacks.join('\n')));
 
 // build types
 while (TYPES.values().find(e => e === true)) {
@@ -152,6 +164,11 @@ function buildField(
   selfReturn?: boolean,
 ): string {
   if (SCALARS.has(type)) {
+    const optional = description.includes('Optional');
+    if (description.includes('#RRGGBB')) {
+      type = '`#${string}`';
+    }
+
     return `
 /**
  * ${md_description(description)}
@@ -159,7 +176,7 @@ function buildField(
  * @type {${SCALARS.get(type)}}
  * @readonly
  */
-readonly ${field}: ${SCALARS.get(type)};`;
+readonly ${field}${optional ? '?' : ''}: ${SCALARS.get(type)};`;
   }
 
   if (type.startsWith('Array of')) {

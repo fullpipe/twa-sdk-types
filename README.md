@@ -1,66 +1,55 @@
 # ts-package-boilerplate
 
-## Setup
+## Usage
 
-To rebuild types
+Install
+
+```sh
+npm install @telegram-webapps/types
+```
+
+Declare in `global.d.ts`
+
+```ts
+import { Telegram } from '@telegram-webapps/types';
+
+declare global {
+  interface Window {
+    Telegram: Telegram;
+  }
+}
+window.Telegram.WebApp.HapticFeedback.notificationOccurred('success');
+```
+
+## Versioning and updates
+
+Major and minor versions of a package will be sync with SDK.
+
+`SDK v9.0` => `@telegram-webapps/types@9.0.*`
+
+So all fixes within SDK v9.0 would be published as patches.
+
+## Update and generate
+
+rebuild types
 
 ```sh
 deno --allow-env --allow-read --allow-net --allow-write scrape/main.ts
 ```
 
-```ts
-import type WebApp from './index.d.ts';
+Build
 
-declare global {
-  interface Window {
-    Telegram: { WebApp: WebApp };
-  }
-}
+```sh
+npm run build
 ```
 
-Also fix other stuff in `package.json`
+Publish or patch
 
-That's it. Use it
-
-```
-npm i
-npm run test
-```
-
-## What's inside?
-
-**gts** with some tweaks  
-**mocha + chai** for tests  
-**build/** dir not ignored by default  
-**npm publish** automation
-
-## Publish
-
-### Login
-
-In order to publish your package, you need to create an NPM account.  
-If you don’t have an account run command `npm adduser`
-If you already have an account, run `npm login` to login to you NPM account.
-
-### Publish
-
-To publish your package run
-
-```
+```sh
 npm publish
-```
-
-### Versioning
-
-To patch
-
-```
 npm version patch
-npm publish
 ```
-
-`version` command executes `git add ...` and `git push`, see `package.json`
 
 ## Todo
 
-- [ ] add github actions for tests and build?
+- [ ] Update and generate with github cron actions
