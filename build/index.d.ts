@@ -417,7 +417,7 @@ export interface WebApp {
  *
  * @see https://core.telegram.org/bots/webapps#events-available-for-mini-apps
  */
-declare const enum EventType {
+export declare enum EventType {
     /**
      * `Bot API 8.0+` Occurs when the Mini App becomes active (e.g., opened from minimized state or selected among tabs).
      * _eventHandler_ receives no parameters.

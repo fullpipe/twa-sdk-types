@@ -100,7 +100,7 @@ const eventEnum = [
  *
  * @see https://core.telegram.org/bots/webapps#events-available-for-mini-apps
  */`,
-  'const enum EventType {',
+  'export enum EventType {',
 ];
 const eventCallbacks = ['interface EventCallbacks {'];
 

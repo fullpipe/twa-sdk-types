@@ -483,7 +483,7 @@ close(): void;
  *
  * @see https://core.telegram.org/bots/webapps#events-available-for-mini-apps
  */
-const enum EventType {
+export enum EventType {
 
 /**
  * `Bot API 8.0+` Occurs when the Mini App becomes active (e.g., opened from minimized state or selected among tabs).  
