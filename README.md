@@ -37,6 +37,7 @@ rebuild types
 
 ```sh
 deno --allow-env --allow-read --allow-net --allow-write scrape/main.ts
+npx prettier -w src/*
 ```
 
 Build
