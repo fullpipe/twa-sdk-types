@@ -165,30 +165,32 @@ function buildField(
 ): string {
   if (SCALARS.has(type)) {
     const optional = description.includes('Optional');
+    let fieldType = SCALARS.get(type);
+
     if (description.includes('#RRGGBB')) {
-      type = '`#${string}`';
+      fieldType = '`#${string}`';
     }
 
     return `
 /**
  * ${md_description(description)}
  *
- * @type {${SCALARS.get(type)}}
+ * @type {${fieldType}}
  * @readonly
  */
-readonly ${field}${optional ? '?' : ''}: ${SCALARS.get(type)};`;
+readonly ${field}${optional ? '?' : ''}: ${fieldType};`;
   }
 
   if (type.startsWith('Array of')) {
-    type = type.replace('Array of', '').trim() + [];
+    const fieldType = type.replace('Array of', '').trim() + '[]';
     return `
 /**
  * ${md_description(description)}
  *
- * @type {${SCALARS.get(type)}}
+ * @type {${fieldType}}
  * @readonly
  */
-readonly ${field}: ${SCALARS.get(type)};`;
+readonly ${field}: ${fieldType};`;
   }
 
   if (type == 'Function') {
