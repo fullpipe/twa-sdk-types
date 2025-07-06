@@ -49,8 +49,8 @@ npm run build
 Publish or patch
 
 ```sh
-npm publish
 npm version patch
+npm publish
 ```
 
 ## Todo
