@@ -50,7 +50,10 @@ export const FunctionSigs: {
     },
 
     openInvoice: {
-      args: ['string', '(status: string) => void'],
+      args: [
+        'string',
+        '(status: "paid"|"cancelled"|"failed"|"pending") => void',
+      ],
     },
     shareToStory: {
       args: ['string', 'StoryShareParams'],
