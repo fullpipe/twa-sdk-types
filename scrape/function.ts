@@ -48,7 +48,6 @@ export const FunctionSigs: {
     openTelegramLink: {
       args: ['string'],
     },
-
     openInvoice: {
       args: [
         'string',

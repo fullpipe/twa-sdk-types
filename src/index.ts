@@ -410,7 +410,10 @@ export interface WebApp {
   /**
    * `Bot API 6.1+` A method that opens an invoice using the link _url_. The Mini App will receive the [event](#events-available-for-mini-apps) _invoiceClosed_ when the invoice is closed. If an optional _callback_ parameter was passed, the _callback_ function will be called and the invoice status will be passed as the first argument.
    */
-  openInvoice(url: string, callback?: (status: string) => void): void;
+  openInvoice(
+    url: string,
+    callback?: (status: 'paid' | 'cancelled' | 'failed' | 'pending') => void,
+  ): void;
 
   /**
    * `Bot API 7.8+` A method that opens the native story editor with the media specified in the _media\_url_ parameter as an HTTPS URL. An optional _params_ argument of the type [StoryShareParams](#storyshareparams) describes additional sharing settings.
@@ -445,6 +448,11 @@ export interface WebApp {
     params: DownloadFileParams,
     callback?: (granted: boolean) => void,
   ): void;
+
+  /**
+   * `Bot API 9.1+` A method that hides the on-screen keyboard, if it is currently visible. Does nothing if the keyboard is not active.
+   */
+  hideKeyboard(): void;
 
   /**
    * `Bot API 6.2+` A method that shows a native popup described by the _params_ argument of the type [PopupParams](#popupparams). The Mini App will receive the [event](#events-available-for-mini-apps) _popupClosed_ when the popup is closed. If an optional _callback_ parameter was passed, the _callback_ function will be called and the field _id_ of the pressed button will be passed as the first argument.
