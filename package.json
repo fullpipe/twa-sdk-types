@@ -1,6 +1,6 @@
 {
   "name": "twa-sdk-types",
-  "version": "9.0.9",
+  "version": "9.1.0",
   "description": "Types for Telegram Web Apps (TWA) SDK",
   "keywords": [
     "telegram",
