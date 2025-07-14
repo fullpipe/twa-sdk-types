@@ -1,5 +1,11 @@
 # Types for Telegram Web Apps (TWA) SDK
 
+[![Telegram webapps docs](https://img.shields.io/badge/webapps%20docs-blue)](https://core.telegram.org/bots/webapps)
+
+[![NPM Version](https://img.shields.io/npm/v/twa-sdk-types)](https://www.npmjs.com/package/twa-sdk-types)
+
+`twa-sdk-types` is a TypeScript package that provides type definitions for the Telegram Web Apps SDK.
+
 ## Usage
 
 Install
