@@ -352,7 +352,7 @@ export interface WebApp {
     /**
      * `Bot API 8.0+` A method that opens a dialog allowing the user to set the specified custom emoji as their status. An optional _params_ argument of type [EmojiStatusParams](#emojistatusparams) specifies additional settings, such as duration. If an optional _callback_ parameter is provided, the _callback_ function will be called with a boolean as the first argument, indicating whether the status was set.
      *
-     * _Note: this method opens a native dialog and cannot be used to set the emoji status without manual user interaction. For fully programmatic changes, you should instead use the Bot API method [setUserEmojiStatus](bots/api#setuseremojistatus) after obtaining authorization to do so via the Mini App method requestEmojiStatusAccess._
+     * _Note: this method opens a native dialog and cannot be used to set the emoji status without manual user interaction. For fully programmatic changes, you should instead use the Bot API method [setUserEmojiStatus](/bots/api#setuseremojistatus) after obtaining authorization to do so via the Mini App method requestEmojiStatusAccess._
      */
     setEmojiStatus(custom_emoji_id: string, params?: EmojiStatusParams, callback?: (success: boolean) => void): void;
     /**
@@ -1156,6 +1156,13 @@ export interface BottomButton {
      */
     readonly type: string;
     /**
+     * `Bot API 9.5+` Unique identifier of the custom emoji shown before the text of the button.
+     *
+     * @type {string}
+     * @readonly
+     */
+    readonly iconCustomEmojiId: string;
+    /**
      * Current button text. Set to _Continue_ for the main button and _Cancel_ for the secondary button by default.
      *
      * @type {string}
@@ -1256,6 +1263,7 @@ export interface BottomButton {
     hideProgress(): BottomButton;
     /**
      * A method to set the button parameters. The _params_ parameter is an object containing one or several fields that need to be changed:
+     * **icon\_custom\_emoji\_id** - `Bot API 9.5+` button icon emoji id;
      * **text** - button text;
      * **color** - button color;
      * **text\_color** - button text color;
