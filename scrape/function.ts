@@ -91,6 +91,9 @@ export const FunctionSigs: {
     requestContact: {
       args: ['(granted: boolean) => void'],
     },
+    requestChat: {
+      args: ['string', '(sent: boolean) => void'],
+    },
   },
   BackButton: {
     onClick: { args: ['() => void'] },
